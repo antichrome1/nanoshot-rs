@@ -1,0 +1,21 @@
+* nanoshot
+
+Simple screenshotting tool for MacOS.
+
+Build, install and run:
+#+begin_src sh
+$ cargo build --release
+$ ./target/release/nanoshot &
+#+end_src
+
+Use:
+- Click - Take screenshot
+- Ctrl+Click - Take 5 screenshots in a row (5x esc to exit)
+
+** License, Author, AI disclosure
+
+No AI agents/tools were/are used in this project.
+
+Copyright (c) 2026 Aditya Singh <antichrome1@proton.me>
+
+SPDX-License-Identifier: ISC
