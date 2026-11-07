@@ -1,5 +1,7 @@
 #![forbid(unsafe_code)]
 
+use std::path::PathBuf;
+use std::sync::OnceLock;
 use tray_icon::{Icon, TrayIcon, TrayIconBuilder, TrayIconEvent};
 use winit::{
     application::ApplicationHandler,
@@ -14,8 +16,8 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
-static FOLDER: &str = "/Users/as/screenshots";
 static CHAIN_CLICK_TIMES: u8 = 5;
+static FOLDER: OnceLock<PathBuf> = OnceLock::new();
 
 #[derive(Default)]
 struct App(Option<TrayIcon>);
@@ -61,7 +63,7 @@ fn chain_screenshot() -> Result<(), Box<dyn std::error::Error>> {
 fn screenshot() -> Result<(), Box<dyn std::error::Error>> {
 
     let timestamp = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
-    let path = Path::new(FOLDER).join(format!("Screenshot-{timestamp}.png"));
+    let path = Path::new(FOLDER.get().unwrap()).join(format!("Screenshot-{timestamp}.png"));
 
     let status = Command::new("/usr/sbin/screencapture")
         .arg("-i")
@@ -75,9 +77,19 @@ fn screenshot() -> Result<(), Box<dyn std::error::Error>> {
     }
 }
 
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    fs::create_dir_all(FOLDER)?;
+
+    FOLDER.get_or_init(|| {
+        let home = std::env::var_os("HOME")
+            .map(PathBuf::from)
+            .expect("HOME is not set");
+        home.join("screenshots")
+    });
+
+    fs::create_dir_all(FOLDER.get().unwrap())?;
+
+    println!("[+] nanoshot is running, saving screenshots to `{:?}'", FOLDER.get().unwrap());
+
     let el = EventLoop::<TrayIconEvent>::with_user_event().build().unwrap();
     let proxy: EventLoopProxy<_> = el.create_proxy();
     TrayIconEvent::set_event_handler(Some(move |e| { let _ = proxy.send_event(e); }));
