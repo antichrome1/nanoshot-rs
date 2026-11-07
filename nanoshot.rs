@@ -1,7 +1,5 @@
 #![forbid(unsafe_code)]
 
-use std::path::PathBuf;
-use std::sync::OnceLock;
 use tray_icon::{Icon, TrayIcon, TrayIconBuilder, TrayIconEvent};
 use winit::{
     application::ApplicationHandler,
@@ -10,8 +8,9 @@ use winit::{
     event::WindowEvent,
 };
 use std::{
+    sync::OnceLock,
     fs,
-    path::Path,
+    path::{Path, PathBuf},
     process::Command,
     time::{SystemTime, UNIX_EPOCH},
 };
