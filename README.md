@@ -15,7 +15,7 @@ Use:
 - Click - Take screenshot
 - Ctrl+Click - Take 5 screenshots in a row (esc to exit)
 
-## License, Author, AI disclosure
+## License
 
 No AI agents/tools were/are used in this project.
 
