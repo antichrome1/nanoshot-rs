@@ -12,8 +12,8 @@ $ ./target/release/nanoshot
 ```
 
 Use:
-- Click - Take screenshot
-- Ctrl+Click - Take 5 screenshots in a row (esc to exit)
+- Click on icon - Take screenshot
+- Ctrl+Click on icon - Take 5 screenshots in a row (esc to exit)
 
 ## License
 
