@@ -25,7 +25,9 @@ impl ApplicationHandler<TrayIconEvent> for App {
     fn window_event(&mut self, _: &ActiveEventLoop, _: WindowId, _: WindowEvent) {}
 
     fn resumed(&mut self, _: &ActiveEventLoop) {
-        let img = image::open("icon.png").unwrap().into_rgba8();
+        let img = image::load_from_memory(include_bytes!("icon.png"))
+            .unwrap()
+            .into_rgba8();
         let (w, h) = img.dimensions();
         self.0 = Some(TrayIconBuilder::new()
                       .with_icon(Icon::from_rgba(img.into_raw(), w, h).unwrap())
