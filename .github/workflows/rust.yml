@@ -17,8 +17,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: dtolnay/rust-toolchain@stable
+
+    - name: Dep tree
+      run: cargo tree
+
     - name: Build
-      run: cargo build --verbose
-    - env:
+      run: cargo build --release
+
+    - name: Create release and upload binary
+      env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh release create "$GITHUB_REF_NAME" target/release/nanoshot --generate-notes
+        TAG: ${{ github.ref_name }}
+      run: |
+        gh release create "$TAG" \
+          "target/release/nanoshot#nanoshot" \
+          --generate-notes
