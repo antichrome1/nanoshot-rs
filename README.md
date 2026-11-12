@@ -5,7 +5,12 @@ Simple screenshotting tool for MacOS.
 - Puts a clickable icon on the menu bar.
 - All screenshots go in `~/screenshots`.
 
-Build and run:
+Install pre-built binary:
+```console
+mise use -g github:antichrome1/nanoshot-rs@v0.9.4
+```
+
+Or, build from source:
 ```console
 $ cargo build --release
 $ ./target/release/nanoshot
