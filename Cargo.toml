@@ -1,6 +1,6 @@
 [package]
 name    = "nanoshot"
-version = "0.9.0"
+version = "0.9.5"
 edition = "2024"
 homepage    = "https://github.com/antichrome1/nanoshot-rs"
 description = "Simple screenshotting tool for MacOS"
