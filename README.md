@@ -9,7 +9,7 @@ Simple screenshotting tool for MacOS.
 
 Install pre-built binary:
 ```console
-$ mise use -g github:antichrome1/nanoshot-rs@v0.9.4
+$ mise use -g github:antichrome1/nanoshot-rs@v0.9.5
 $ nanoshot
 ```
 
