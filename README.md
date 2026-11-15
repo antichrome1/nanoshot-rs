@@ -5,18 +5,23 @@ Simple screenshotting tool for MacOS.
 - Puts a clickable icon on the menu bar.
 - All screenshots go in `~/screenshots`.
 
+## Install
+
 Install pre-built binary:
 ```console
-mise use -g github:antichrome1/nanoshot-rs@v0.9.4
+$ mise use -g github:antichrome1/nanoshot-rs@v0.9.4
+$ nanoshot
 ```
 
-Or, build from source:
+Or, use nix to build from source:
 ```console
-$ cargo build --release
-$ ./target/release/nanoshot
+$ git clone https://github.com/antichrome1/nanoshot-rs && cd nanoshot-rs
+$ nix-build
+$ ./result/bin/nanoshot
 ```
 
-Use:
+## Use
+
 - Click on icon - Take screenshot
 - Ctrl+Click on icon - Take 5 screenshots in a row (esc to exit)
 
