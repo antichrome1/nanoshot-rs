@@ -20,8 +20,7 @@ Use:
 - Click on icon - Take screenshot
 - Ctrl+Click on icon - Take 5 screenshots in a row (esc to exit)
 
-## Metadata
+## License
 
-License: ISC<br>
+ISC © 2026 Aditya Singh <antichrome1@proton.me> <br>
 AI usage: No AI agents/tools were/are used in this project.<br>
-Contact: Aditya Singh <antichrome1@proton.me>
